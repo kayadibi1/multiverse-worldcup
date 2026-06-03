@@ -1,0 +1,58 @@
+:root {
+  --bg: #05070f;
+  --panel: rgba(10, 18, 34, 0.72);
+  --line: #1b2740;
+  --text: #cfe0ff;
+  --muted: #7e93b3;
+  --amber: #ffd27a;
+  --cyan: #4db5ff;
+  --green: #3ddc97;
+  --red: #ff5d6c;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; height: 100%; background: var(--bg); color: var(--text); overflow: hidden; }
+.app { position: fixed; inset: 0; }
+.app canvas { display: block; width: 100% !important; height: 100% !important; }
+
+/* HUD */
+.hud {
+  position: absolute; top: 0; left: 0; right: 0; height: 48px; display: flex;
+  align-items: center; justify-content: space-between; padding: 0 16px; gap: 10px;
+  background: linear-gradient(180deg, rgba(5, 9, 18, 0.9), transparent); z-index: 10;
+  pointer-events: none;
+}
+.brand { font-weight: 800; letter-spacing: 0.5px; color: #eaf2ff; font-size: 15px; }
+.brand span { color: var(--cyan); font-weight: 400; font-size: 12px; }
+.scrubber { display: flex; gap: 6px; font-size: 11px; color: var(--muted); }
+.scrubber span { padding: 3px 9px; border: 1px solid var(--line); border-radius: 11px; }
+.scrubber span.on { background: var(--amber); color: #0a0e1a; border-color: var(--amber); }
+.hud-right { display: flex; gap: 10px; align-items: center; font-size: 11px; }
+.sims { color: var(--muted); }
+.prov { padding: 3px 9px; border-radius: 11px; border: 1px solid var(--line); color: var(--muted); }
+.prov.ollama { color: var(--green); border-color: #1e5a3c; }
+
+/* Panels */
+.panel { position: absolute; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 12px; backdrop-filter: blur(8px); z-index: 9; }
+.panel .h { font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--muted);
+  padding: 10px 12px 6px; }
+.panel.left { top: 64px; left: 16px; width: 230px; padding-bottom: 8px; }
+.row { display: flex; align-items: center; gap: 7px; padding: 4px 12px; font-size: 12px; }
+.row .code { width: 30px; color: #eaf2ff; font-weight: 600; }
+.row .bar { flex: 1; height: 5px; border-radius: 3px; background: #16202f; overflow: hidden; }
+.row .bar i { display: block; height: 100%; background: linear-gradient(90deg, var(--cyan), var(--amber)); border-radius: 3px; transition: width 0.6s ease; }
+.row .pct { width: 38px; text-align: right; color: #eaf2ff; }
+.row .tr { width: 12px; text-align: center; font-size: 9px; }
+.row .tr.up { color: var(--green); }
+.row .tr.down { color: var(--red); }
+
+/* Futures rail */
+.panel.rail { bottom: 16px; left: 50%; transform: translateX(-50%); padding: 6px 14px 12px; max-width: 92vw; }
+.panel.rail .h { text-align: center; }
+.rail-row { display: flex; gap: 10px; }
+.future { background: #0c1730; border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px;
+  min-width: 150px; text-align: left; color: var(--text); cursor: pointer; transition: border-color 0.2s; }
+.future:hover { border-color: var(--cyan); }
+.future .champ { font-weight: 700; color: var(--amber); font-size: 13px; }
+.future .path { color: var(--muted); font-size: 11px; margin-top: 2px; }
