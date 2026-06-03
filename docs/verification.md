@@ -41,7 +41,7 @@ Run: `cd web && npx playwright test`
 | 9 | `/api/health` shows `graniteProvider: ollama` | curl above |
 | 10 | README with 7 sections + IBM honesty | `README.md` |
 | 11 | Fresh clone runs to the globe (Ollama optional) | fresh-clone test (below) |
-| 12 | Repo is public | ⚠️ see "GitHub" below |
+| 12 | Repo is public | ✅ https://github.com/kayadibi1/multiverse-worldcup |
 
 ## Fresh-clone test — PASS ✅
 A clean `git clone` into a separate directory (committed files only) was built (`npm run build` ✓) and served on port 8001 with the same interpreter; a headless check reached the globe: `GET /api/health` → `ollama` + 63 KB facts + embeddings, and `window.__multiverse` → `ready=true, championSum=1.0000, simN=4000, bloom=false`. Confirms the repo is self-contained (committed `data/kb/` + all sources; only env deps installed).

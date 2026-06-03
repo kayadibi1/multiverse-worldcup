@@ -2,6 +2,8 @@
 
 **An explorable counterfactual multiverse for the FIFA World Cup 2026.** Not a single prediction — a space of *thousands* of simulated tournaments you can fly through, perturb with "what-ifs," and ask *why*. Built for the **IBM SkillsBuild AI Builders Challenge** (June / FIFA World Cup track).
 
+**Repo:** https://github.com/kayadibi1/multiverse-worldcup
+
 > Simulate the entire 48-team tournament 10,000 times in the browser, render the result as a living 3D globe of probability, drop in an injury or a storm and watch the futures ripple, then dive into any match to watch a **formation-constellation duel** narrated by **IBM Granite** — grounded in real facts extracted by **IBM Docling**.
 
 ![Oracle Globe](docs/shot-p4-globe.png)
