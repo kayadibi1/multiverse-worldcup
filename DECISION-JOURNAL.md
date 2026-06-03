@@ -116,3 +116,23 @@ A workflow ran 2 challenge-fit + 4 technical review passes + synthesis (48 raw f
 **Why:** the first 25/25-passing engine run had **Spain at 48.5% to win the cup** — mathematically fine, but it *kills the product's soul*. A near-coin-flip favorite makes the "space of futures" look like a single prediction. A `k`-sweep (0.22–0.55, 4k sims each) showed `k=0.22` yields ESP **19.9%** / ARG 11.6% / FRA 9.2% / BRA 5.7% / ENG 5.5% / NED 4.3% — a realistic top-favorite probability (matching real bookmaker shape) with a genuinely contested field.
 
 **Impact:** *creative* — the globe will show many glowing pillars, not one tower; dark-horse timelines in the divergence rail become believable; what-if ripples are visible because no single team is locked in. *Technical* — the sanity assertion (leader ∈ {ESP,FRA,ARG}, each > 5%) still holds, and calibration is a single pinned parameter in `modelParams`, reproducible and documented. This is the kind of tuning that doesn't show up in a correctness test but decides whether the demo feels alive.
+
+---
+
+## 10 · Implementation complete & verified (P0–P10)
+
+Built end-to-end, committing after every green gate. Final state:
+
+- **Engine (P2):** seeded Monte-Carlo of the real WC2026 format; **25/25 unit tests** (invariants, reproducibility, divergence, data sanity); 10k sims in ~235ms.
+- **Backend (P3):** FastAPI with the Granite provider chain, embedding+BM25 retriever, deterministic-first what-if parser, and SSE narration — all curl-verified, Granite live.
+- **Frontend (P4–P7):** Oracle Globe (r3f + bloom + instanced pillars), what-if dock with shockwave ripple + trend arrows, camera dive (CameraControls) to a stadium formation-duel, and a streamed Granite StoryPanel with Docling citation chips.
+- **Verification (P10):** **4/4 headless Playwright e2e** (SwiftShader) green — boot, intervene, dive, narrate; a **real fresh-clone test** built and served the app and reached the globe (`championSum=1.0000`). Evidence in `docs/verification.md` + four screenshots.
+- **Deliverables (P9):** README (7 sections + IBM honesty + provenance + 4 documented approximations), MIT LICENSE, run/dev scripts, Langflow flow JSON + Context Forge gateway config (each mapped to code), 3-min video storyboard.
+
+**Decisions of note in this phase:**
+- **Two long-running heavyweight installs (Docling on torch, the npm three stack) succeeded on bleeding-edge versions** — so the *real* IBM Docling and a genuine GPU globe both shipped, not stubs. Worth the early de-risking.
+- **Every "proof" was made provider- and GPU-independent**: citations come from the retriever before generation (offline narrator cites too), and e2e assertions are logic+DOM under SwiftShader with a benign-warning allow-list — so "everything works" is provable in a headless box.
+- **The `op:'set'` Granite drift** (a normalization bug that would have silently no-op'd injuries) was caught only because the intervene path was curl-tested against *live* Granite, not assumed. Fixed by normalizing strength modifiers to additive at the coercion layer.
+- **Public repo:** GitHub auth was present (`kayadibi1`), so the repo was created public and pushed — fulfilling the submission requirement under the standing autonomy grant.
+
+**Honest scope notes:** the rich on-rails cold-open (space→arcs→dive) is a lightweight flythrough (the elaborate version is stretch); no dynamic FPS step-down (static headless reduction only); Langflow/Context Forge are real artifacts mirrored in code, not live servers (stated in their READMEs). None of these block the verified MVP.

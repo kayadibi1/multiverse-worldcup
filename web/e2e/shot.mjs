@@ -5,6 +5,8 @@ const b = await chromium.launch({ args: ['--use-gl=angle', '--use-angle=swiftsha
 const p = await b.newPage({ viewport: { width: 1280, height: 800 } })
 await p.goto(url)
 await p.waitForFunction(() => window.__multiverse?.ready === true, { timeout: 60000 })
+const mv = await p.evaluate(() => window.__multiverse)
+console.log(`__multiverse: ready=${mv.ready} championSum=${mv.championSum?.toFixed(4)} simN=${mv.simCount} bloom=${mv.bloom}`)
 if (process.argv[4] === 'inject') {
   await p.getByTestId('team-select').selectOption('BRA')
   await p.getByTestId('card-injury').click()
