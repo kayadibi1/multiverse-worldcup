@@ -56,3 +56,20 @@ html, body, #root { margin: 0; height: 100%; background: var(--bg); color: var(-
 .future:hover { border-color: var(--cyan); }
 .future .champ { font-weight: 700; color: var(--amber); font-size: 13px; }
 .future .path { color: var(--muted); font-size: 11px; margin-top: 2px; }
+
+/* What-if dock */
+.panel.dock { top: 64px; right: 16px; width: 258px; padding-bottom: 10px; }
+.dock .cards { display: flex; flex-wrap: wrap; gap: 6px; padding: 4px 12px; }
+.dock select { width: 100%; margin-bottom: 4px; background: #0c1730; color: var(--text); border: 1px solid var(--line); border-radius: 7px; padding: 5px; font-size: 12px; }
+.dock .cards button, .dock .freetext button { background: #0c1730; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 5px 8px; font-size: 11px; cursor: pointer; }
+.dock .cards button:hover, .dock .freetext button:hover { border-color: var(--cyan); }
+.dock .freetext { display: flex; gap: 6px; padding: 8px 12px 4px; }
+.dock .freetext input { flex: 1; min-width: 0; background: #0c1730; color: var(--text); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; font-size: 11px; }
+.dock .chips { display: flex; flex-wrap: wrap; gap: 5px; padding: 8px 12px 0; }
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; padding: 3px 6px; border-radius: 8px; border: 1px solid var(--line); background: #0c1730; }
+.chip.granite { border-color: #5b3f8a; color: #d9c2ff; }
+.chip.fallback { border-color: #2f6fb0; }
+.chip.card { border-color: #2f6fb0; }
+.chip button { background: none; border: none; color: var(--muted); cursor: pointer; padding: 0; font-size: 11px; }
+.chips .clear { font-size: 10px; color: var(--red); background: none; border: 1px solid #5a2630; border-radius: 8px; padding: 3px 7px; cursor: pointer; }
+

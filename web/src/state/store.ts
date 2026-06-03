@@ -19,6 +19,7 @@ interface State {
   simMs: number
   simN: number
   busy: boolean
+  rippleAt: number
   set: (p: Partial<State>) => void
   addModifiers: (m: Modifier[]) => void
   removeModifier: (id: string) => void
@@ -27,11 +28,11 @@ interface State {
 
 export const useStore = create<State>((set) => ({
   ratings: null, sim: null, baseline: null, modifiers: [], view: 'cold',
-  fixture: null, health: null, simMs: 0, simN: 0, busy: false,
+  fixture: null, health: null, simMs: 0, simN: 0, busy: false, rippleAt: 0,
   set: (p) => set(p),
-  addModifiers: (m) => set((s) => ({ modifiers: [...s.modifiers, ...m], busy: true })),
-  removeModifier: (id) => set((s) => ({ modifiers: s.modifiers.filter((x) => x.id !== id), busy: true })),
-  clearModifiers: () => set({ modifiers: [], busy: true }),
+  addModifiers: (m) => set((s) => ({ modifiers: [...s.modifiers, ...m], busy: true, rippleAt: Date.now() })),
+  removeModifier: (id) => set((s) => ({ modifiers: s.modifiers.filter((x) => x.id !== id), busy: true, rippleAt: Date.now() })),
+  clearModifiers: () => set({ modifiers: [], busy: true, rippleAt: Date.now() }),
 }))
 
 // Helper: a leaderboard (code + pChamp + trend vs baseline), sorted desc.
