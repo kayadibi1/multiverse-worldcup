@@ -1,0 +1,1262 @@
+{
+  "tournament": "FIFA World Cup 2026",
+  "drawStatus": "final",
+  "provenance": {
+    "eloSnapshot": "2026-06-01",
+    "fifaRankAsOf": "2026-04",
+    "drawDate": "2025-12-05",
+    "note": "Elo from the World Football Elo ratings; FIFA ranks April 2026; final draw 2025-12-05. Aggregated from public sources for a non-commercial demo.",
+    "sources": [
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup_draw",
+      "https://en.wikipedia.org/wiki/2026_FIFA_World_Cup",
+      "https://www.nbcsports.com/soccer/news/2026-world-cup-groups-confirmed-full-draw-groups-details",
+      "https://www.dazn.com/en-US/news/soccer/fifa-world-cup-26-full-draw-every-group-all-fixtures-and-knockout-games/4dmk002ictjp1ch43z8iw0x3z",
+      "https://www.espn.com/soccer/story/_/id/46664763/fifa-mens-top-50-world-rankings",
+      "https://en.wikipedia.org/wiki/Module:SportsRankings/data/World_Football_Elo_Ratings",
+      "https://inside.fifa.com/fifa-world-ranking/men"
+    ]
+  },
+  "modelParams": {
+    "base": 1.3,
+    "k": 0.55,
+    "homeAdv": 0.25,
+    "etBump": 0.3,
+    "penaltyK": 0.6,
+    "eloCenter": 1800.0,
+    "eloScale": 200.0,
+    "variance": 1.0
+  },
+  "format": {
+    "groups": 12,
+    "perGroup": 4,
+    "thirdsAdvancing": 8
+  },
+  "groups": {
+    "A": [
+      "MEX",
+      "KOR",
+      "RSA",
+      "CZE"
+    ],
+    "B": [
+      "CAN",
+      "SUI",
+      "QAT",
+      "BIH"
+    ],
+    "C": [
+      "BRA",
+      "MAR",
+      "SCO",
+      "HAI"
+    ],
+    "D": [
+      "USA",
+      "PAR",
+      "AUS",
+      "TUR"
+    ],
+    "E": [
+      "GER",
+      "ECU",
+      "CIV",
+      "CUW"
+    ],
+    "F": [
+      "NED",
+      "JPN",
+      "TUN",
+      "SWE"
+    ],
+    "G": [
+      "BEL",
+      "IRN",
+      "EGY",
+      "NZL"
+    ],
+    "H": [
+      "ESP",
+      "URU",
+      "KSA",
+      "CPV"
+    ],
+    "I": [
+      "FRA",
+      "SEN",
+      "NOR",
+      "IRQ"
+    ],
+    "J": [
+      "ARG",
+      "AUT",
+      "ALG",
+      "JOR"
+    ],
+    "K": [
+      "POR",
+      "COL",
+      "UZB",
+      "COD"
+    ],
+    "L": [
+      "ENG",
+      "CRO",
+      "PAN",
+      "GHA"
+    ]
+  },
+  "teams": [
+    {
+      "code": "MEX",
+      "name": "Mexico",
+      "confederation": "CONCACAF",
+      "group": "A",
+      "elo": 1868.0,
+      "fifaRank": 15,
+      "isHost": true,
+      "keyPlayers": [
+        {
+          "name": "Santiago Gimenez",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Edson Alvarez",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "energetic possession with quick combination play and a high press as co-hosts",
+      "blurb": "energetic possession with quick combination play and a high press as co-hosts",
+      "modifiers": []
+    },
+    {
+      "code": "KOR",
+      "name": "South Korea",
+      "confederation": "AFC",
+      "group": "A",
+      "elo": 1756.0,
+      "fifaRank": 25,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Son Heung-min",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Lee Kang-in",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "relentless running and direct transitions led by a world-class forward",
+      "blurb": "relentless running and direct transitions led by a world-class forward",
+      "modifiers": []
+    },
+    {
+      "code": "RSA",
+      "name": "South Africa",
+      "confederation": "CAF",
+      "group": "A",
+      "elo": 1517.0,
+      "fifaRank": 56,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Lyle Foster",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Teboho Mokoena",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "patient build-up and quick wingers with a disciplined defensive block",
+      "blurb": "patient build-up and quick wingers with a disciplined defensive block",
+      "modifiers": []
+    },
+    {
+      "code": "CZE",
+      "name": "Czechia",
+      "confederation": "UEFA",
+      "group": "A",
+      "elo": 1733.0,
+      "fifaRank": 41,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Patrik Schick",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Tomas Soucek",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "physical, organized and dangerous from set pieces and aerial threats",
+      "blurb": "physical, organized and dangerous from set pieces and aerial threats",
+      "modifiers": []
+    },
+    {
+      "code": "CAN",
+      "name": "Canada",
+      "confederation": "CONCACAF",
+      "group": "B",
+      "elo": 1793.0,
+      "fifaRank": 30,
+      "isHost": true,
+      "keyPlayers": [
+        {
+          "name": "Alphonso Davies",
+          "role": "DF",
+          "importance": 1.0
+        },
+        {
+          "name": "Jonathan David",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "fast, athletic counter-attacks driven by explosive wide players as co-hosts",
+      "blurb": "fast, athletic counter-attacks driven by explosive wide players as co-hosts",
+      "modifiers": []
+    },
+    {
+      "code": "SUI",
+      "name": "Switzerland",
+      "confederation": "UEFA",
+      "group": "B",
+      "elo": 1894.0,
+      "fifaRank": 19,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Granit Xhaka",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Breel Embolo",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "compact, well-drilled defensively with controlled midfield possession",
+      "blurb": "compact, well-drilled defensively with controlled midfield possession",
+      "modifiers": []
+    },
+    {
+      "code": "QAT",
+      "name": "Qatar",
+      "confederation": "AFC",
+      "group": "B",
+      "elo": 1423.0,
+      "fifaRank": 53,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Akram Afif",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Almoez Ali",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "technical short-passing and patient possession in tight spaces",
+      "blurb": "technical short-passing and patient possession in tight spaces",
+      "modifiers": []
+    },
+    {
+      "code": "BIH",
+      "name": "Bosnia and Herzegovina",
+      "confederation": "UEFA",
+      "group": "B",
+      "elo": 1591.0,
+      "fifaRank": 71,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Edin Dzeko",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Sead Kolasinac",
+          "role": "DF",
+          "importance": 0.7
+        }
+      ],
+      "style": "direct and physical with a veteran target striker leading the line",
+      "blurb": "direct and physical with a veteran target striker leading the line",
+      "modifiers": []
+    },
+    {
+      "code": "BRA",
+      "name": "Brazil",
+      "confederation": "CONMEBOL",
+      "group": "C",
+      "elo": 1988.0,
+      "fifaRank": 6,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Vinicius Junior",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Rodrygo",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "high-tempo attacking with elite dribbling wingers and individual flair",
+      "blurb": "high-tempo attacking with elite dribbling wingers and individual flair",
+      "modifiers": []
+    },
+    {
+      "code": "MAR",
+      "name": "Morocco",
+      "confederation": "CAF",
+      "group": "C",
+      "elo": 1822.0,
+      "fifaRank": 8,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Achraf Hakimi",
+          "role": "DF",
+          "importance": 1.0
+        },
+        {
+          "name": "Brahim Diaz",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "organized defensively with explosive wing-backs and rapid transitions",
+      "blurb": "organized defensively with explosive wing-backs and rapid transitions",
+      "modifiers": []
+    },
+    {
+      "code": "SCO",
+      "name": "Scotland",
+      "confederation": "UEFA",
+      "group": "C",
+      "elo": 1770.0,
+      "fifaRank": 43,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Scott McTominay",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Andrew Robertson",
+          "role": "DF",
+          "importance": 0.7
+        }
+      ],
+      "style": "high-energy pressing and aggressive overlapping full-backs",
+      "blurb": "high-energy pressing and aggressive overlapping full-backs",
+      "modifiers": []
+    },
+    {
+      "code": "HAI",
+      "name": "Haiti",
+      "confederation": "CONCACAF",
+      "group": "C",
+      "elo": 1532.0,
+      "fifaRank": 84,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Frantzdy Pierrot",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Duckens Nazon",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "athletic and direct, dangerous on the counter with pacey forwards",
+      "blurb": "athletic and direct, dangerous on the counter with pacey forwards",
+      "modifiers": []
+    },
+    {
+      "code": "USA",
+      "name": "United States",
+      "confederation": "CONCACAF",
+      "group": "D",
+      "elo": 1733.0,
+      "fifaRank": 16,
+      "isHost": true,
+      "keyPlayers": [
+        {
+          "name": "Christian Pulisic",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Weston McKennie",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "energetic high press with quick wide attackers as co-hosts",
+      "blurb": "energetic high press with quick wide attackers as co-hosts",
+      "modifiers": []
+    },
+    {
+      "code": "PAR",
+      "name": "Paraguay",
+      "confederation": "CONMEBOL",
+      "group": "D",
+      "elo": 1833.0,
+      "fifaRank": 40,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Miguel Almiron",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Antonio Sanabria",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "tough, compact defending and efficient counter-attacking",
+      "blurb": "tough, compact defending and efficient counter-attacking",
+      "modifiers": []
+    },
+    {
+      "code": "AUS",
+      "name": "Australia",
+      "confederation": "AFC",
+      "group": "D",
+      "elo": 1775.0,
+      "fifaRank": 27,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Jackson Irvine",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Martin Boyle",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "hardworking and resilient with strong organization and set-piece threat",
+      "blurb": "hardworking and resilient with strong organization and set-piece threat",
+      "modifiers": []
+    },
+    {
+      "code": "TUR",
+      "name": "Turkey",
+      "confederation": "UEFA",
+      "group": "D",
+      "elo": 1906.0,
+      "fifaRank": 22,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Arda Guler",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Kenan Yildiz",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "creative, technical attacking through gifted young playmakers",
+      "blurb": "creative, technical attacking through gifted young playmakers",
+      "modifiers": []
+    },
+    {
+      "code": "GER",
+      "name": "Germany",
+      "confederation": "UEFA",
+      "group": "E",
+      "elo": 1925.0,
+      "fifaRank": 10,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Jamal Musiala",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Florian Wirtz",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "possession-dominant with intricate midfield creativity and pressing",
+      "blurb": "possession-dominant with intricate midfield creativity and pressing",
+      "modifiers": []
+    },
+    {
+      "code": "ECU",
+      "name": "Ecuador",
+      "confederation": "CONMEBOL",
+      "group": "E",
+      "elo": 1935.0,
+      "fifaRank": 23,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Moises Caicedo",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Enner Valencia",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "physically dominant midfield with a rock-solid defense and counters",
+      "blurb": "physically dominant midfield with a rock-solid defense and counters",
+      "modifiers": []
+    },
+    {
+      "code": "CIV",
+      "name": "Ivory Coast",
+      "confederation": "CAF",
+      "group": "E",
+      "elo": 1676.0,
+      "fifaRank": 34,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Sebastien Haller",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Franck Kessie",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "powerful, athletic and direct with strength in central midfield",
+      "blurb": "powerful, athletic and direct with strength in central midfield",
+      "modifiers": []
+    },
+    {
+      "code": "CUW",
+      "name": "Curacao",
+      "confederation": "CONCACAF",
+      "group": "E",
+      "elo": 1433.0,
+      "fifaRank": 82,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Juninho Bacuna",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Tahith Chong",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "well-organized underdog relying on Dutch-schooled technical players",
+      "blurb": "well-organized underdog relying on Dutch-schooled technical players",
+      "modifiers": []
+    },
+    {
+      "code": "NED",
+      "name": "Netherlands",
+      "confederation": "UEFA",
+      "group": "F",
+      "elo": 1961.0,
+      "fifaRank": 7,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Virgil van Dijk",
+          "role": "DF",
+          "importance": 1.0
+        },
+        {
+          "name": "Cody Gakpo",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "structured positional possession with fluid attacking rotations",
+      "blurb": "structured positional possession with fluid attacking rotations",
+      "modifiers": []
+    },
+    {
+      "code": "JPN",
+      "name": "Japan",
+      "confederation": "AFC",
+      "group": "F",
+      "elo": 1906.0,
+      "fifaRank": 18,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Takefusa Kubo",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Kaoru Mitoma",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "fast, technical passing and aggressive pressing with skillful wingers",
+      "blurb": "fast, technical passing and aggressive pressing with skillful wingers",
+      "modifiers": []
+    },
+    {
+      "code": "TUN",
+      "name": "Tunisia",
+      "confederation": "CAF",
+      "group": "F",
+      "elo": 1633.0,
+      "fifaRank": 44,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Hannibal Mejbri",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Youssef Msakni",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "disciplined defensive structure and resilient organized blocks",
+      "blurb": "disciplined defensive structure and resilient organized blocks",
+      "modifiers": []
+    },
+    {
+      "code": "SWE",
+      "name": "Sweden",
+      "confederation": "UEFA",
+      "group": "F",
+      "elo": 1714.0,
+      "fifaRank": 38,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Alexander Isak",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Viktor Gyokeres",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "direct and physical with elite clinical strikers leading attacks",
+      "blurb": "direct and physical with elite clinical strikers leading attacks",
+      "modifiers": []
+    },
+    {
+      "code": "BEL",
+      "name": "Belgium",
+      "confederation": "UEFA",
+      "group": "G",
+      "elo": 1866.0,
+      "fifaRank": 9,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Kevin De Bruyne",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Jeremy Doku",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "creative attacking through world-class playmaking and pace out wide",
+      "blurb": "creative attacking through world-class playmaking and pace out wide",
+      "modifiers": []
+    },
+    {
+      "code": "IRN",
+      "name": "Iran",
+      "confederation": "AFC",
+      "group": "G",
+      "elo": 1764.0,
+      "fifaRank": 21,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Mehdi Taremi",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Alireza Jahanbakhsh",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "compact, physical defending with dangerous counter-attacks",
+      "blurb": "compact, physical defending with dangerous counter-attacks",
+      "modifiers": []
+    },
+    {
+      "code": "EGY",
+      "name": "Egypt",
+      "confederation": "CAF",
+      "group": "G",
+      "elo": 1699.0,
+      "fifaRank": 29,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Mohamed Salah",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Omar Marmoush",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "counter-attacking built around a world-class finisher's movement",
+      "blurb": "counter-attacking built around a world-class finisher's movement",
+      "modifiers": []
+    },
+    {
+      "code": "NZL",
+      "name": "New Zealand",
+      "confederation": "OFC",
+      "group": "G",
+      "elo": 1585.0,
+      "fifaRank": 86,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Chris Wood",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Marko Stamenic",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "physical, aerially strong and organized with a target-man focus",
+      "blurb": "physical, aerially strong and organized with a target-man focus",
+      "modifiers": []
+    },
+    {
+      "code": "ESP",
+      "name": "Spain",
+      "confederation": "UEFA",
+      "group": "H",
+      "elo": 2165.0,
+      "fifaRank": 2,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Lamine Yamal",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Pedri",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "dominant possession and intricate positional play with elite young talent",
+      "blurb": "dominant possession and intricate positional play with elite young talent",
+      "modifiers": []
+    },
+    {
+      "code": "URU",
+      "name": "Uruguay",
+      "confederation": "CONMEBOL",
+      "group": "H",
+      "elo": 1892.0,
+      "fifaRank": 17,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Federico Valverde",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Darwin Nunez",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "intense, combative midfield with grit and clinical attacking transitions",
+      "blurb": "intense, combative midfield with grit and clinical attacking transitions",
+      "modifiers": []
+    },
+    {
+      "code": "KSA",
+      "name": "Saudi Arabia",
+      "confederation": "AFC",
+      "group": "H",
+      "elo": 1566.0,
+      "fifaRank": 58,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Salem Al-Dawsari",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Firas Al-Buraikan",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "high-pressing and energetic with quick technical attacking play",
+      "blurb": "high-pressing and energetic with quick technical attacking play",
+      "modifiers": []
+    },
+    {
+      "code": "CPV",
+      "name": "Cape Verde",
+      "confederation": "CAF",
+      "group": "H",
+      "elo": 1576.0,
+      "fifaRank": 73,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Ryan Mendes",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Jamiro Monteiro",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "spirited debutant underdog with compact defending and quick counters",
+      "blurb": "spirited debutant underdog with compact defending and quick counters",
+      "modifiers": []
+    },
+    {
+      "code": "FRA",
+      "name": "France",
+      "confederation": "UEFA",
+      "group": "I",
+      "elo": 2081.0,
+      "fifaRank": 1,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Kylian Mbappe",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Aurelien Tchouameni",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "devastating pace on the counter with elite individual quality throughout",
+      "blurb": "devastating pace on the counter with elite individual quality throughout",
+      "modifiers": []
+    },
+    {
+      "code": "SEN",
+      "name": "Senegal",
+      "confederation": "CAF",
+      "group": "I",
+      "elo": 1866.0,
+      "fifaRank": 14,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Nicolas Jackson",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Pape Matar Sarr",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "powerful, athletic and physical with strong pressing and pace",
+      "blurb": "powerful, athletic and physical with strong pressing and pace",
+      "modifiers": []
+    },
+    {
+      "code": "NOR",
+      "name": "Norway",
+      "confederation": "UEFA",
+      "group": "I",
+      "elo": 1917.0,
+      "fifaRank": 31,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Erling Haaland",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Martin Odegaard",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "direct attacking funneled to a world-class goal-scoring striker",
+      "blurb": "direct attacking funneled to a world-class goal-scoring striker",
+      "modifiers": []
+    },
+    {
+      "code": "IRQ",
+      "name": "Iraq",
+      "confederation": "AFC",
+      "group": "I",
+      "elo": 1608.0,
+      "fifaRank": 57,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Aymen Hussein",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Zidane Iqbal",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "combative and organized, dangerous from set pieces and physical duels",
+      "blurb": "combative and organized, dangerous from set pieces and physical duels",
+      "modifiers": []
+    },
+    {
+      "code": "ARG",
+      "name": "Argentina",
+      "confederation": "CONMEBOL",
+      "group": "J",
+      "elo": 2113.0,
+      "fifaRank": 3,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Lionel Messi",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Julian Alvarez",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "balanced, tactically astute with elite creativity and ruthless finishing",
+      "blurb": "balanced, tactically astute with elite creativity and ruthless finishing",
+      "modifiers": []
+    },
+    {
+      "code": "AUT",
+      "name": "Austria",
+      "confederation": "UEFA",
+      "group": "J",
+      "elo": 1830.0,
+      "fifaRank": 24,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Marcel Sabitzer",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Marko Arnautovic",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "intense gegenpressing and aggressive vertical attacking play",
+      "blurb": "intense gegenpressing and aggressive vertical attacking play",
+      "modifiers": []
+    },
+    {
+      "code": "ALG",
+      "name": "Algeria",
+      "confederation": "CAF",
+      "group": "J",
+      "elo": 1743.0,
+      "fifaRank": 28,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Riyad Mahrez",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Ismael Bennacer",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "technical and creative with skillful wide play and quick combinations",
+      "blurb": "technical and creative with skillful wide play and quick combinations",
+      "modifiers": []
+    },
+    {
+      "code": "JOR",
+      "name": "Jordan",
+      "confederation": "AFC",
+      "group": "J",
+      "elo": 1685.0,
+      "fifaRank": 64,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Mousa Al-Tamari",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Yazan Al-Naimat",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "organized debutant with rapid counter-attacks through pacey forwards",
+      "blurb": "organized debutant with rapid counter-attacks through pacey forwards",
+      "modifiers": []
+    },
+    {
+      "code": "POR",
+      "name": "Portugal",
+      "confederation": "UEFA",
+      "group": "K",
+      "elo": 1984.0,
+      "fifaRank": 5,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Cristiano Ronaldo",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Bruno Fernandes",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "creative, attacking depth with technical midfielders and clinical scorers",
+      "blurb": "creative, attacking depth with technical midfielders and clinical scorers",
+      "modifiers": []
+    },
+    {
+      "code": "COL",
+      "name": "Colombia",
+      "confederation": "CONMEBOL",
+      "group": "K",
+      "elo": 1977.0,
+      "fifaRank": 13,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Luis Diaz",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "James Rodriguez",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "fluid, creative attacking with flair and dangerous wide forwards",
+      "blurb": "fluid, creative attacking with flair and dangerous wide forwards",
+      "modifiers": []
+    },
+    {
+      "code": "UZB",
+      "name": "Uzbekistan",
+      "confederation": "AFC",
+      "group": "K",
+      "elo": 1718.0,
+      "fifaRank": 50,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Eldor Shomurodov",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Abbosbek Fayzullaev",
+          "role": "MF",
+          "importance": 0.7
+        }
+      ],
+      "style": "well-drilled debutant with solid structure and a strong target striker",
+      "blurb": "well-drilled debutant with solid structure and a strong target striker",
+      "modifiers": []
+    },
+    {
+      "code": "COD",
+      "name": "DR Congo",
+      "confederation": "CAF",
+      "group": "K",
+      "elo": 1655.0,
+      "fifaRank": 46,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Cedric Bakambu",
+          "role": "FW",
+          "importance": 1.0
+        },
+        {
+          "name": "Theo Bongonda",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "athletic and pacey on the counter with physical forward runners",
+      "blurb": "athletic and pacey on the counter with physical forward runners",
+      "modifiers": []
+    },
+    {
+      "code": "ENG",
+      "name": "England",
+      "confederation": "UEFA",
+      "group": "L",
+      "elo": 2020.0,
+      "fifaRank": 4,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Jude Bellingham",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Harry Kane",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "deep talent pool with controlled possession and clinical finishing",
+      "blurb": "deep talent pool with controlled possession and clinical finishing",
+      "modifiers": []
+    },
+    {
+      "code": "CRO",
+      "name": "Croatia",
+      "confederation": "UEFA",
+      "group": "L",
+      "elo": 1930.0,
+      "fifaRank": 11,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Luka Modric",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Josko Gvardiol",
+          "role": "DF",
+          "importance": 0.7
+        }
+      ],
+      "style": "midfield-dominant possession and patient ball control with elite passing",
+      "blurb": "midfield-dominant possession and patient ball control with elite passing",
+      "modifiers": []
+    },
+    {
+      "code": "PAN",
+      "name": "Panama",
+      "confederation": "CONCACAF",
+      "group": "L",
+      "elo": 1733.0,
+      "fifaRank": 33,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Adalberto Carrasquilla",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Jose Fajardo",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "tenacious, well-organized and aggressive with strong pressing",
+      "blurb": "tenacious, well-organized and aggressive with strong pressing",
+      "modifiers": []
+    },
+    {
+      "code": "GHA",
+      "name": "Ghana",
+      "confederation": "CAF",
+      "group": "L",
+      "elo": 1503.0,
+      "fifaRank": 72,
+      "isHost": false,
+      "keyPlayers": [
+        {
+          "name": "Mohammed Kudus",
+          "role": "MF",
+          "importance": 1.0
+        },
+        {
+          "name": "Antoine Semenyo",
+          "role": "FW",
+          "importance": 0.7
+        }
+      ],
+      "style": "athletic and direct with dynamic dribbling and pacey wide attackers",
+      "blurb": "athletic and direct with dynamic dribbling and pacey wide attackers",
+      "modifiers": []
+    }
+  ]
+}

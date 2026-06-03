@@ -1,0 +1,15 @@
+{
+  "engine": "docling",
+  "nFacts": 63,
+  "nDossiers": 9,
+  "embedModel": "nomic-embed-text",
+  "embedDim": 768,
+  "hasEmbeddings": true,
+  "demoFixture": {
+    "a": "ESP",
+    "b": "MAR",
+    "round": "R16",
+    "label": "Spain vs Morocco"
+  },
+  "demoFixtureCovered": true
+}

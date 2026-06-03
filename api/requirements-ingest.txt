@@ -1,0 +1,7 @@
+# Ingestion-only deps (heavyweight: torch/transformers via Docling).
+# Used ONCE to build data/kb from data/raw. The runtime (requirements.txt) never needs these.
+# Install into a venv only when (re)building the KB:  pip install -r api/requirements-ingest.txt
+docling==2.97.0
+docling-ibm-models
+pypdf==6.12.2
+requests

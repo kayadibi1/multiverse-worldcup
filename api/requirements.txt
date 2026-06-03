@@ -1,0 +1,8 @@
+# Unpinned to latest so pip pulls cp314 prebuilt wheels (Python 3.14 is bleeding-edge).
+# Plain uvicorn (not [standard]) to avoid native httptools/uvloop builds on Windows/3.14.
+fastapi
+uvicorn
+httpx
+rank-bm25
+numpy
+python-multipart

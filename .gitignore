@@ -1,0 +1,29 @@
+# deps
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+dist/
+build/
+.vite/
+
+# env / secrets
+.env
+.env.local
+*.local
+
+# data artifacts (large / generated)
+data/models/
+data/raw/*.pdf
+*.gguf
+
+# os
+.DS_Store
+Thumbs.db
+
+# brainstorm companion
+.superpowers/
+
+# logs
+*.log
