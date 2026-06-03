@@ -13,7 +13,7 @@ KB = ROOT / "data" / "kb"
 
 # Pinned model parameters (spec v2 §7/§8). The worker derives strength s=(elo-eloCenter)/eloScale.
 MODEL_PARAMS = {
-    "base": 1.30, "k": 0.55, "homeAdv": 0.25, "etBump": 0.30,
+    "base": 1.30, "k": 0.22, "homeAdv": 0.25, "etBump": 0.30,
     "penaltyK": 0.60, "eloCenter": 1800.0, "eloScale": 200.0, "variance": 1.0,
 }
 FORMAT = {"groups": 12, "perGroup": 4, "thirdsAdvancing": 8}

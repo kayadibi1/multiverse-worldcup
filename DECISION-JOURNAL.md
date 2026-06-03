@@ -106,3 +106,13 @@ A workflow ran 2 challenge-fit + 4 technical review passes + synthesis (48 raw f
 - **Added P4.5 — a thinnest vertical slice** (one team, one fixture, one citation, minimal cold-open) so the **first recordable demo exists early** instead of being back-loaded into the riskiest final phases. *Impact:* protects the video deliverable against any late-phase stall — there's always something compelling to capture.
 - **Added the two REQUIRED deliverables the plan forgot:** the **3-minute video** (a red gate, scripted from the e2e path) and a **LICENSE** (a public repo with none is all-rights-reserved, contradicting "fork it"). Fresh-clone gate is now a *real* `git clone` to tmp, and GitHub-auth absence surfaces a loud manual-step flag rather than silently passing. *Impact:* closes the gap between "runnable app" and "valid submission."
 - **Perf de-risked empirically:** a reviewer benchmarked 2.06M Poisson draws in 26ms → 10k sims × 103 matches is comfortably sub-1.5s. *Impact:* the signature performance claim is now evidence-backed before a line of engine code.
+
+---
+
+## 9 · Engine calibration (the favorite must not eat the multiverse)
+
+**Decision:** lower the strength coefficient `k` from 0.55 → **0.22**.
+
+**Why:** the first 25/25-passing engine run had **Spain at 48.5% to win the cup** — mathematically fine, but it *kills the product's soul*. A near-coin-flip favorite makes the "space of futures" look like a single prediction. A `k`-sweep (0.22–0.55, 4k sims each) showed `k=0.22` yields ESP **19.9%** / ARG 11.6% / FRA 9.2% / BRA 5.7% / ENG 5.5% / NED 4.3% — a realistic top-favorite probability (matching real bookmaker shape) with a genuinely contested field.
+
+**Impact:** *creative* — the globe will show many glowing pillars, not one tower; dark-horse timelines in the divergence rail become believable; what-if ripples are visible because no single team is locked in. *Technical* — the sanity assertion (leader ∈ {ESP,FRA,ARG}, each > 5%) still holds, and calibration is a single pinned parameter in `modelParams`, reproducible and documented. This is the kind of tuning that doesn't show up in a correctness test but decides whether the demo feels alive.
