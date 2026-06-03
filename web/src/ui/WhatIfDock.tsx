@@ -13,10 +13,12 @@ export function WhatIfDock() {
   const addModifiers = useStore((s) => s.addModifiers)
   const removeModifier = useStore((s) => s.removeModifier)
   const clearModifiers = useStore((s) => s.clearModifiers)
+  const view = useStore((s) => s.view)
   const [team, setTeam] = useState('BRA')
   const [text, setText] = useState('')
   const [pending, setPending] = useState(false)
 
+  if (view === 'stadium') return null
   const teams = ratings?.teams.slice().sort((a, b) => a.name.localeCompare(b.name)) ?? []
   const imp = (c: string) =>
     Math.max(...(ratings?.teams.find((t) => t.code === c)?.keyPlayers.map((p) => p.importance) ?? [1]))

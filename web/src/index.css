@@ -92,3 +92,16 @@ html, body, #root { margin: 0; height: 100%; background: var(--bg); color: var(-
 .stadium-hud .back { background: #0c1730; color: var(--text); border: 1px solid var(--line); border-radius: 8px;
   padding: 5px 12px; font-size: 12px; cursor: pointer; }
 
+/* Story panel */
+.panel.story { top: 64px; right: 16px; width: 304px; padding-bottom: 12px; max-height: 78vh; display: flex; flex-direction: column; }
+.story-headline { font-size: 17px; font-weight: 800; color: #eaf2ff; padding: 2px 14px 6px; line-height: 1.2; }
+.story-body { font-size: 12.5px; color: var(--text); padding: 0 14px; line-height: 1.5; overflow: auto; }
+.cursor { color: var(--cyan); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.citations { display: flex; flex-wrap: wrap; gap: 5px; padding: 10px 14px 0; }
+.cite { font-size: 10px; color: var(--muted); border: 1px solid var(--line); border-radius: 7px; padding: 3px 7px; }
+.voices { display: flex; gap: 5px; padding: 12px 14px 0; flex-wrap: wrap; }
+.voices button { background: #0c1730; color: var(--muted); border: 1px solid var(--line); border-radius: 8px;
+  padding: 4px 9px; font-size: 11px; cursor: pointer; text-transform: capitalize; }
+.voices button.on { color: var(--amber); border-color: var(--amber); }
+

@@ -7,6 +7,7 @@ import { FuturesRail } from './ui/FuturesRail'
 import { WhatIfDock } from './ui/WhatIfDock'
 import { ColdOpen } from './ui/ColdOpen'
 import { StadiumHud } from './ui/StadiumHud'
+import { StoryPanel } from './ui/StoryPanel'
 import { useStore } from './state/store'
 import { useSim } from './sim/useSim'
 import { getRatings, getHealth } from './api/client'
@@ -31,6 +32,7 @@ export default function App() {
       <WhatIfDock />
       <FuturesRail />
       <StadiumHud />
+      <StoryPanel />
       <ColdOpen />
     </div>
   )

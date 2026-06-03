@@ -14,6 +14,10 @@ if (process.argv[4] === 'inject') {
   await p.locator('[data-testid^="future-"]').first().click()
   await p.waitForFunction(() => window.__multiverse?.cameraWaypoint === 'stadium', { timeout: 15000 })
   await p.waitForTimeout(2800)
+} else if (process.argv[4] === 'story') {
+  await p.locator('[data-testid^="future-"]').first().click()
+  await p.getByTestId('citation-chip').first().waitFor({ state: 'visible', timeout: 55000 })
+  await p.waitForTimeout(600)
 }
 await p.waitForTimeout(2000)
 await p.screenshot({ path: out })
