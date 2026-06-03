@@ -10,6 +10,10 @@ if (process.argv[4] === 'inject') {
   await p.getByTestId('card-injury').click()
   await p.getByTestId('card-host').click()
   await p.waitForTimeout(800)
+} else if (process.argv[4] === 'dive') {
+  await p.locator('[data-testid^="future-"]').first().click()
+  await p.waitForFunction(() => window.__multiverse?.cameraWaypoint === 'stadium', { timeout: 15000 })
+  await p.waitForTimeout(2800)
 }
 await p.waitForTimeout(2000)
 await p.screenshot({ path: out })

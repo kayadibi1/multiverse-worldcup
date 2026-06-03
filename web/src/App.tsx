@@ -5,6 +5,8 @@ import { Hud } from './ui/Hud'
 import { Leaderboard } from './ui/Leaderboard'
 import { FuturesRail } from './ui/FuturesRail'
 import { WhatIfDock } from './ui/WhatIfDock'
+import { ColdOpen } from './ui/ColdOpen'
+import { StadiumHud } from './ui/StadiumHud'
 import { useStore } from './state/store'
 import { useSim } from './sim/useSim'
 import { getRatings, getHealth } from './api/client'
@@ -14,13 +16,13 @@ export default function App() {
   useSim()
 
   useEffect(() => {
-    getRatings().then((r) => set({ ratings: r, view: 'globe' })).catch(() => {})
+    getRatings().then((r) => set({ ratings: r })).catch(() => {})
     getHealth().then((h) => set({ health: h })).catch(() => {})
   }, [set])
 
   return (
     <div className="app" data-testid="app">
-      <Canvas camera={{ position: [0, 1.2, 6.2], fov: 45 }} dpr={[1, 2]}>
+      <Canvas camera={{ position: [0, 4, 18], fov: 45 }} dpr={[1, 2]}>
         <color attach="background" args={['#05070f']} />
         <Scene />
       </Canvas>
@@ -28,6 +30,8 @@ export default function App() {
       <Leaderboard />
       <WhatIfDock />
       <FuturesRail />
+      <StadiumHud />
+      <ColdOpen />
     </div>
   )
 }
