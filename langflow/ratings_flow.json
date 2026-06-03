@@ -1,0 +1,21 @@
+{
+  "name": "Ratings to Strength Table",
+  "description": "Offline pipeline: real WC2026 research data + Docling-extracted facts -> canonical Strength Table that the Monte-Carlo samples. Authored against the Langflow schema; mirrored 1:1 in api/multiverse/data.py + ingest.py (Langflow does not pip-install on Python 3.14, so the runtime does not import it).",
+  "data": {
+    "nodes": [
+      { "id": "load-research", "type": "genericNode", "position": { "x": 80, "y": 120 },
+        "data": { "type": "DataLoader", "node": { "display_name": "Load teams.research.json", "description": "Real final WC2026 draw + World Football Elo (data/raw/teams.research.json)", "outputs": ["teams"] } } },
+      { "id": "docling-ingest", "type": "genericNode", "position": { "x": 80, "y": 320 },
+        "data": { "type": "DoclingParse", "node": { "display_name": "Docling: dossiers -> facts", "description": "docling 2.97 DocumentConverter over data/raw/dossier_*.md -> facts.jsonl", "outputs": ["facts"] } } },
+      { "id": "elo-to-strength", "type": "genericNode", "position": { "x": 440, "y": 180 },
+        "data": { "type": "Function", "node": { "display_name": "Elo -> strength + importance", "description": "strength s=(elo-eloCenter)/eloScale; synthesize keyPlayer importance; pin modelParams", "inputs": ["teams"], "outputs": ["table"] } } },
+      { "id": "strength-table", "type": "genericNode", "position": { "x": 780, "y": 220 },
+        "data": { "type": "JSONOutput", "node": { "display_name": "Strength Table (data/kb/teams.json)", "description": "Served by GET /api/ratings; sampled by the Web-Worker engine", "inputs": ["table", "facts"] } } }
+    ],
+    "edges": [
+      { "id": "e1", "source": "load-research", "target": "elo-to-strength" },
+      { "id": "e2", "source": "elo-to-strength", "target": "strength-table" },
+      { "id": "e3", "source": "docling-ingest", "target": "strength-table" }
+    ]
+  }
+}

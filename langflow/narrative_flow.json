@@ -1,0 +1,26 @@
+{
+  "name": "Narrative",
+  "description": "Fixture/timeline -> retrieved facts (Context Forge) -> IBM Granite story, streamed with citations. Authored against the Langflow schema; mirrored 1:1 in api/multiverse/narrate.py + retriever.py + granite.py.",
+  "data": {
+    "nodes": [
+      { "id": "fixture-in", "type": "genericNode", "position": { "x": 80, "y": 160 },
+        "data": { "type": "Input", "node": { "display_name": "Fixture / Timeline", "description": "{kind, teamA, teamB, round, scoreline, voice}", "outputs": ["payload"] } } },
+      { "id": "retriever", "type": "genericNode", "position": { "x": 380, "y": 120 },
+        "data": { "type": "ContextForgeRetriever", "node": { "display_name": "Retrieve facts (Context Forge)", "description": "nomic-embed-text cosine top-k + BM25 fallback over the Docling KB", "inputs": ["payload"], "outputs": ["facts"] } } },
+      { "id": "prompt", "type": "genericNode", "position": { "x": 700, "y": 160 },
+        "data": { "type": "PromptTemplate", "node": { "display_name": "Voice + facts prompt", "description": "Pundit / Poet / Tactician / Kid; ground every claim in the retrieved facts", "inputs": ["payload", "facts"], "outputs": ["prompt"] } } },
+      { "id": "granite", "type": "genericNode", "position": { "x": 1020, "y": 160 },
+        "data": { "type": "GraniteModel", "node": { "display_name": "IBM Granite (granite3.3:2b)", "description": "Ollama /api/chat, think=false, streamed tokens", "inputs": ["prompt"], "outputs": ["story"] } } },
+      { "id": "story-out", "type": "genericNode", "position": { "x": 1340, "y": 160 },
+        "data": { "type": "SSEOutput", "node": { "display_name": "Story + citations (SSE)", "description": "event:token deltas, then event:meta {headline, voice, causes, citations}", "inputs": ["story", "facts"] } } }
+    ],
+    "edges": [
+      { "id": "e1", "source": "fixture-in", "target": "retriever" },
+      { "id": "e2", "source": "fixture-in", "target": "prompt" },
+      { "id": "e3", "source": "retriever", "target": "prompt" },
+      { "id": "e4", "source": "prompt", "target": "granite" },
+      { "id": "e5", "source": "granite", "target": "story-out" },
+      { "id": "e6", "source": "retriever", "target": "story-out" }
+    ]
+  }
+}

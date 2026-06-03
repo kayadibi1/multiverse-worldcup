@@ -1,0 +1,39 @@
+{
+  "gateway": "multiverse-kb-gateway",
+  "description": "IBM Context Forge (MCP gateway) configuration that federates the MULTIVERSE knowledge-base retriever as an MCP tool, so any MCP-aware client (incl. Granite agents) can pull grounded World Cup facts. In the demo, FastAPI calls the retriever directly; the gateway config documents the MCP contract.",
+  "servers": [
+    {
+      "name": "multiverse-retriever",
+      "transport": "streamable-http",
+      "url": "http://localhost:8000/api",
+      "tools": [
+        {
+          "name": "retrieve",
+          "description": "Retrieve grounded football facts for a query using embedding cosine (nomic-embed-text) with a BM25 fallback over the Docling-built KB.",
+          "inputSchema": {
+            "type": "object",
+            "properties": {
+              "query": { "type": "string", "description": "natural-language query" },
+              "teams": { "type": "array", "items": { "type": "string" }, "description": "FIFA codes to boost" },
+              "k": { "type": "integer", "default": 4 }
+            },
+            "required": ["query"]
+          },
+          "outputSchema": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "teams": { "type": "array", "items": { "type": "string" } },
+                "text": { "type": "string" },
+                "source": { "type": "string" },
+                "label": { "type": "string" }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
