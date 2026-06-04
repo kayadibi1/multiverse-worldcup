@@ -8,8 +8,11 @@ export function FadeTransition() {
   const prev = useRef(view)
   const [flash, setFlash] = useState(false)
   useEffect(() => {
-    if (prev.current === view) return
+    const from = prev.current
+    if (from === view) return
     prev.current = view
+    // Only mask stadium swaps; cold->globe keeps its visible camera pull-back.
+    if (from !== 'stadium' && view !== 'stadium') return
     setFlash(true)
     const id = requestAnimationFrame(() => requestAnimationFrame(() => setFlash(false)))
     return () => cancelAnimationFrame(id)

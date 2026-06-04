@@ -1,5 +1,5 @@
 import { Canvas } from '@react-three/fiber'
-import { useEffect } from 'react'
+import { useEffect, Suspense } from 'react'
 import { Scene } from './scene/Scene'
 import { Hud } from './ui/Hud'
 import { Leaderboard } from './ui/Leaderboard'
@@ -37,7 +37,9 @@ export default function App() {
     <div className="app" data-testid="app">
       <Canvas camera={{ position: [0, 4, 18], fov: 45 }} dpr={[1, 2]} onDoubleClick={diveTopFinal}>
         <color attach="background" args={['#05070f']} />
-        <Scene />
+        <Suspense fallback={null}>
+          <Scene />
+        </Suspense>
       </Canvas>
       <Hud />
       <Leaderboard />

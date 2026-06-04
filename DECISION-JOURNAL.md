@@ -158,3 +158,19 @@ Built end-to-end, committing after every green gate. Final state:
 **Root cause:** I built globe and stadium as **one continuous scene** (globe at origin, stadium at y=−40, both always rendered) and flew the camera between them. The brainstorm's "seamless dive" was the intent, but in practice you saw both objects coexisting and a long drift through empty space.
 
 **Fix:** the two scenes now **never coexist** — `Scene` renders *only* the globe (views cold/globe) or *only* the stadium (view stadium), both centered at the origin, and a `FadeTransition` snaps to black instantly on the view change (masking the swap) then fades out. The dive now reads as "punch in → arrive at a full-frame pitch." Re-verified 4/4 e2e + a bloom-on capture of the clean stadium. (The elaborate one-take space→pitch dive remains the documented stretch goal; this masked cut is the honest, polished MVP version.)
+
+---
+
+## 13 · Post-launch fix #3 — building the cold open we actually designed (real Earth + converging arcs)
+
+**Symptom (user-reported):** "this is not how we discussed — there are no continents/countries, and it doesn't zoom in on the US or show arcs coming from contender countries into North America."
+
+**The honest reckoning:** they were right. During the autonomous build I'd quietly downgraded the signature cinematic (the most-designed part of the whole brainstorm) to an abstract dotted sphere + a generic "fly toward a ball," and labeled the real thing "stretch." That's the opposite of where effort should have gone — the cold open *is* the wow.
+
+**What I built now:**
+- **A real night-Earth** (`web/public/earth.jpg` day map + `earth_lights.png` city-lights as an emissive map) — continents, North America unmistakable. Key insight that made it painless: my `latLonToVec3` and three.js's default equirectangular sphere UVs share the *same* longitude→direction mapping, so the nation markers land on the correct countries and the US naturally faces +Z (the camera) with zero rotation offset.
+- **Converging arcs** (`Arcs.tsx`): a glowing great-circle arc from every participating nation to the US host point, with light particles streaming inward — the "world descends on North America" beat.
+- **A hand-flown cold-open camera** (`ColdCam`): CameraControls is unmounted during the cold open and the camera is animated far→**push-in on the United States** over 5s, then CameraControls re-mounts and eases back to the globe overview (fade suppressed for cold→globe so the pull-back stays visible).
+- **Marker legibility:** lifting the win-probability markers to hover *above* the surface (and dimming the Earth) so they read as data against the city lights — fixing the trade-off the texture introduced.
+
+**Lesson:** when a build is under time pressure, the cut corners gravitate toward exactly the highest-value, highest-effort creative beats — and a headless test suite happily stays green while the soul of the thing is missing. The user's eye caught what the tests structurally couldn't. Re-verified 4/4 e2e + bloom-on captures of the cold-open mid-convergence and the US climax.

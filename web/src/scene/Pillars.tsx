@@ -63,8 +63,8 @@ export function Pillars({ R }: { R: number }) {
         const facing = wn.dot(camDir)
         const t = THREE.MathUtils.clamp((facing - 0.15) / 0.35, 0, 1)
         const sv = t * t * (3 - 2 * t)
-        const radius = (0.014 + cur.current[i] * 0.06) * sv
-        dummy.position.copy(nm).multiplyScalar(R + 0.01)
+        const radius = (0.022 + cur.current[i] * 0.075) * sv
+        dummy.position.copy(nm).multiplyScalar(R + 0.12) // hover above the surface so markers read against city lights
         dummy.quaternion.identity()
         dummy.scale.setScalar(Math.max(0.0001, radius))
         dummy.updateMatrix()

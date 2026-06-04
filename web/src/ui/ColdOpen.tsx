@@ -12,16 +12,18 @@ export function ColdOpen() {
     if (view !== 'cold' || !ratings) return
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
     if (reduced) { set({ view: 'globe' }); return }
-    const t = setTimeout(() => set({ view: 'globe' }), 3200)
+    const t = setTimeout(() => set({ view: 'globe' }), 5500)
     return () => clearTimeout(t)
   }, [view, ratings, set])
 
   if (view !== 'cold') return null
   return (
     <div className="coldopen" data-testid="coldopen">
-      <div className="co-title">MULTIVERSE</div>
-      <div className="co-sub">Every future of the 2026 World Cup — simulated.</div>
-      <button data-testid="skip-cold-open" onClick={() => set({ view: 'globe' })}>Enter ▸</button>
+      <div className="co-card">
+        <div className="co-title">MULTIVERSE</div>
+        <div className="co-sub">48 nations · one host · every future converging on North America.</div>
+      </div>
+      <button data-testid="skip-cold-open" onClick={() => set({ view: 'globe' })}>Skip intro ▸</button>
     </div>
   )
 }

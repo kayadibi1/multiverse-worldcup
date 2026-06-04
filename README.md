@@ -6,6 +6,10 @@
 
 > Simulate the entire 48-team tournament 10,000 times in the browser, render the result as a living 3D globe of probability, drop in an injury or a storm and watch the futures ripple, then dive into any match to watch a **formation-constellation duel** narrated by **IBM Granite** — grounded in real facts extracted by **IBM Docling**.
 
+![The cold open — every nation's arc converging on the US host, then a push-in on the United States](docs/shot-coldopen.png)
+
+*Cold open: the world descends on North America.* …resolving into the interactive **Oracle Globe** (a real night-Earth with win-probability markers hovering over each nation):
+
 ![Oracle Globe](docs/shot-p4-globe.png)
 
 ---

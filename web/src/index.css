@@ -74,15 +74,16 @@ html, body, #root { margin: 0; height: 100%; background: var(--bg); color: var(-
 .chips .clear { font-size: 10px; color: var(--red); background: none; border: 1px solid #5a2630; border-radius: 8px; padding: 3px 7px; cursor: pointer; }
 
 /* Cold open */
-.coldopen { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center;
-  justify-content: center; gap: 12px; z-index: 20; pointer-events: none;
-  background: radial-gradient(circle at 50% 50%, transparent 40%, rgba(5, 7, 15, 0.55)); }
+.coldopen { position: absolute; inset: 0; z-index: 20; pointer-events: none; }
+.co-card { position: absolute; top: 33%; left: 50%; transform: translate(-50%, -50%); text-align: center;
+  animation: cocard 5.5s ease forwards; }
 .co-title { font-size: 64px; font-weight: 900; letter-spacing: 6px; color: #eaf2ff;
-  text-shadow: 0 0 42px rgba(77, 181, 255, 0.6); animation: cofade 1.2s ease; }
-.co-sub { color: var(--cyan); font-size: 16px; letter-spacing: 1px; animation: cofade 1.6s ease; }
-.coldopen button { pointer-events: auto; margin-top: 10px; background: #0c1730; color: var(--amber);
-  border: 1px solid var(--amber); border-radius: 10px; padding: 8px 22px; font-size: 14px; cursor: pointer; }
-@keyframes cofade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; } }
+  text-shadow: 0 0 42px rgba(77, 181, 255, 0.6); }
+.co-sub { color: var(--cyan); font-size: 15px; letter-spacing: 1px; margin-top: 8px; }
+.coldopen button { pointer-events: auto; position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+  background: #0c1730; color: var(--amber); border: 1px solid var(--amber); border-radius: 10px;
+  padding: 8px 22px; font-size: 13px; cursor: pointer; }
+@keyframes cocard { 0% { opacity: 0; } 12% { opacity: 1; } 55% { opacity: 1; } 82% { opacity: 0; } 100% { opacity: 0; } }
 
 /* Stadium hud */
 .stadium-hud { position: absolute; top: 58px; left: 50%; transform: translateX(-50%); z-index: 11;
