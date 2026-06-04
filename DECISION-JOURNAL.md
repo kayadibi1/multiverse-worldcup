@@ -148,3 +148,13 @@ Built end-to-end, committing after every green gate. Final state:
 **Fix:** (a) added a `?hq=1` override so I could capture the true bloom-on render under automation; (b) replaced bars with **glowing surface dots sized by P(win)** — a node *on* the surface can't streak past the silhouette — plus camera-facing-hemisphere culling so only front nations light up (like city lights); (c) tuned bloom down (intensity 1.1→0.6, threshold 0.18→0.32) and thinned the atmosphere; (d) made the e2e suite **serial** (`workers:1`) after a parallel-load flake. Re-verified: 4/4 e2e green, and a captured *bloom-on* screenshot confirms the clean look.
 
 **Lesson recorded:** "verified" must mean *the artifact the user actually experiences*. A headless WebGL pass is necessary but not sufficient — a bloom-on visual capture has to be part of the loop, not an afterthought.
+
+---
+
+## 12 · Post-launch fix #2 — the "floating pitch under the globe"
+
+**Symptom (user-reported):** zooming only zoomed the globe, and the stadium pitch was visible floating *below* the globe; the "dive" just drifted down to a plane hanging under the planet.
+
+**Root cause:** I built globe and stadium as **one continuous scene** (globe at origin, stadium at y=−40, both always rendered) and flew the camera between them. The brainstorm's "seamless dive" was the intent, but in practice you saw both objects coexisting and a long drift through empty space.
+
+**Fix:** the two scenes now **never coexist** — `Scene` renders *only* the globe (views cold/globe) or *only* the stadium (view stadium), both centered at the origin, and a `FadeTransition` snaps to black instantly on the view change (masking the swap) then fades out. The dive now reads as "punch in → arrive at a full-frame pitch." Re-verified 4/4 e2e + a bloom-on capture of the clean stadium. (The elaborate one-take space→pitch dive remains the documented stretch goal; this masked cut is the honest, polished MVP version.)

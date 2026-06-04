@@ -3,8 +3,9 @@ import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useStore } from '../state/store'
 
-// The stadium lives far below the globe; the camera dives down to it.
-export const STADIUM_POS: [number, number, number] = [0, -40, 0]
+// The stadium is centered at the origin and rendered ONLY in stadium view (the globe is
+// unmounted), so the two scenes never coexist; a fade masks the swap (see FadeTransition).
+export const STADIUM_POS: [number, number, number] = [0, 0, 0]
 const [SX, SY, SZ] = STADIUM_POS
 
 // 4-3-3 (attacking +z, in the −z half). [acrossX, alongZ]

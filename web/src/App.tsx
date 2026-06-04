@@ -8,6 +8,7 @@ import { WhatIfDock } from './ui/WhatIfDock'
 import { ColdOpen } from './ui/ColdOpen'
 import { StadiumHud } from './ui/StadiumHud'
 import { StoryPanel } from './ui/StoryPanel'
+import { FadeTransition } from './ui/FadeTransition'
 import { useStore } from './state/store'
 import { useSim } from './sim/useSim'
 import { getRatings, getHealth } from './api/client'
@@ -34,6 +35,7 @@ export default function App() {
       <StadiumHud />
       <StoryPanel />
       <ColdOpen />
+      <FadeTransition />
     </div>
   )
 }

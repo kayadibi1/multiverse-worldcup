@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { CameraControls } from '@react-three/drei'
 import { useStore } from '../state/store'
-import { STADIUM_POS } from './Stadium'
 
 // One rig that eases between named waypoints — the "one continuous world".
 export function CameraRig() {
@@ -18,8 +17,7 @@ export function CameraRig() {
     if (view === 'cold') {
       c.setLookAt(0, 4, 18, 0, 0, 0, animate)
     } else if (view === 'stadium') {
-      const [x, y, z] = STADIUM_POS
-      c.setLookAt(x, y + 2.6, z + 9.5, x, y + 0.4, z, animate)
+      c.setLookAt(0, 4.5, 11, 0, 0.3, 0, animate)
     } else {
       c.setLookAt(0, 1.2, 6.4, 0, 0, 0, animate)
     }
