@@ -174,3 +174,13 @@ Built end-to-end, committing after every green gate. Final state:
 - **Marker legibility:** lifting the win-probability markers to hover *above* the surface (and dimming the Earth) so they read as data against the city lights — fixing the trade-off the texture introduced.
 
 **Lesson:** when a build is under time pressure, the cut corners gravitate toward exactly the highest-value, highest-effort creative beats — and a headless test suite happily stays green while the soul of the thing is missing. The user's eye caught what the tests structurally couldn't. Re-verified 4/4 e2e + bloom-on captures of the cold-open mid-convergence and the US climax.
+
+---
+
+## 14 · Cold-open choreography v2 (the part the user kept steering) + a screenshot-timing trap
+
+Iterated the cold open to the user's exact direction: (1) **8K night+day Earth** (the 2K looked low-res zoomed in); (2) traces **spiral in the +azimuth spin direction the long way** — never the geodesic shortest path; (3) **simultaneous arrival** — each trace's head speed scales to its own start time so they ALL reach the US at the same instant, where a bright white **convergence beacon flares**; (4) the spin **starts just beside North America and lands on it**, with a **cold camera that flies down the US's direction axis** (lat 39°N — so the US ends up *centered*, not framed off the top).
+
+**The trap that cost several iterations:** my screenshot tool waited `N` ms **after `window.__multiverse.ready`** (~1.5s into load), but the scene's cold-open clock starts at page load — so "capture at 7s" was really capturing ~8.8s of scene time, *past the cold open's end*. I kept "seeing" a dead globe view (the give-away: the globe-only coachmark was visible) and wrongly concluded the convergence wasn't rendering — when in fact I was photographing the wrong moment. Once I corrected for the offset (scene-time ≈ ready + waited), the convergence flare was there and dramatic.
+
+**Lesson:** when a time-based animation "isn't showing," verify you're sampling the right instant before changing the code. A wrong clock reference will send you debugging things that already work. Re-verified 4/4 e2e + a bloom-on capture of the centered US flare (now the hero image).

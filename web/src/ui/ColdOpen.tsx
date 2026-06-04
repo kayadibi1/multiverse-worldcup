@@ -12,7 +12,7 @@ export function ColdOpen() {
     if (view !== 'cold' || !ratings) return
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
     if (reduced) { set({ view: 'globe' }); return }
-    const t = setTimeout(() => set({ view: 'globe' }), 7000)
+    const t = setTimeout(() => set({ view: 'globe' }), 8000)
     return () => clearTimeout(t)
   }, [view, ratings, set])
 

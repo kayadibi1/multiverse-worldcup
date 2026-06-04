@@ -11,7 +11,7 @@ import { latLonToVec3 } from '../data/coords'
 import { GLOBE_R } from './constants'
 
 const COLD_DUR = 7
-const SPIN = Math.PI * 2.5 // ~1.25 slow turns during the cold open
+const SPIN = Math.PI * 1.8 // start just beside North America, sweep ~324°, land on it
 const usN = (() => { const v = latLonToVec3(39, -98, 1); return new THREE.Vector3(v[0], v[1], v[2]).normalize() })()
 // grp.rotation.y that brings the US to face +Z (the camera) at the end of the spin.
 const RHO1 = Math.PI / 2 - Math.atan2(usN.z, usN.x)
@@ -20,7 +20,7 @@ const smoother = (t: number) => t * t * t * (t * (t * 6 - 15) + 10)
 export function Globe() {
   const grp = useRef<THREE.Group>(null)
   const view = useStore((s) => s.view)
-  const tex = useTexture({ map: '/earth.jpg', emissiveMap: '/earth_lights.png' })
+  const tex = useTexture({ map: '/earth_day8k.jpg', emissiveMap: '/earth_night8k.jpg' })
   const cold = useRef(0)
 
   const atmo = useMemo(() => {
