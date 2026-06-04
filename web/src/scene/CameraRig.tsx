@@ -3,30 +3,23 @@ import { useFrame } from '@react-three/fiber'
 import { CameraControls } from '@react-three/drei'
 import * as THREE from 'three'
 import { useStore } from '../state/store'
-import { GLOBE_R as R } from './Globe'
-import { latLonToVec3 } from '../data/coords'
+import { GLOBE_R as R } from './constants'
 
-const usV = latLonToVec3(39, -98, 1)
-const usN = new THREE.Vector3(usV[0], usV[1], usV[2]).normalize()
-const lookTarget = usN.clone().multiplyScalar(R * 0.55)
-
-// During the cold open, CameraControls is unmounted and we hand-animate the default camera:
-// start far out, then push straight in on the United States over ~5s.
+// Cold open: CameraControls is unmounted and the default camera zooms slowly straight in on
+// the front (+Z) — where the spinning globe delivers the United States by the end.
 function ColdCam() {
   const t = useRef(0)
   useFrame((state, dt) => {
-    t.current = Math.min(1, t.current + dt / 5)
-    const e = t.current * t.current
-    const dist = THREE.MathUtils.lerp(20, 2.6, e)
-    const pos = usN.clone().multiplyScalar(R + dist)
-    pos.y += 1.4 * (1 - e)
-    state.camera.position.copy(pos)
-    state.camera.lookAt(lookTarget)
+    t.current = Math.min(1, t.current + dt / 7)
+    const tt = t.current
+    const e = tt < 0.5 ? 2 * tt * tt : 1 - Math.pow(-2 * tt + 2, 2) / 2 // easeInOut
+    const dist = THREE.MathUtils.lerp(15, 4.6, e)
+    state.camera.position.set(0, 0.5 + 1.4 * (1 - e), dist)
+    state.camera.lookAt(0, 0, R * 0.35)
   })
   return null
 }
 
-// One rig: hand-flown cold open, then CameraControls eases between globe and stadium.
 export function CameraRig() {
   const view = useStore((s) => s.view)
   const fixture = useStore((s) => s.fixture)
@@ -37,7 +30,7 @@ export function CameraRig() {
     const c = ref.current
     if (!c) return
     if (view === 'stadium') c.setLookAt(0, 4.5, 11, 0, 0.3, 0, true)
-    else c.setLookAt(0, 1.2, 6.4, 0, 0, 0, true) // pulls back from the US to the globe overview
+    else c.setLookAt(0, 1.2, 6.4, 0, 0, 0, true)
   }, [view, fixture])
 
   if (view === 'cold') return <ColdCam />

@@ -75,8 +75,8 @@ html, body, #root { margin: 0; height: 100%; background: var(--bg); color: var(-
 
 /* Cold open */
 .coldopen { position: absolute; inset: 0; z-index: 20; pointer-events: none; }
-.co-card { position: absolute; top: 33%; left: 50%; transform: translate(-50%, -50%); text-align: center;
-  animation: cocard 5.5s ease forwards; }
+.co-card { position: absolute; top: 30%; left: 50%; transform: translate(-50%, -50%); text-align: center;
+  animation: cocard 7s ease forwards; }
 .co-title { font-size: 64px; font-weight: 900; letter-spacing: 6px; color: #eaf2ff;
   text-shadow: 0 0 42px rgba(77, 181, 255, 0.6); }
 .co-sub { color: var(--cyan); font-size: 15px; letter-spacing: 1px; margin-top: 8px; }

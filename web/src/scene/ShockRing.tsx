@@ -2,7 +2,7 @@ import * as THREE from 'three'
 import { useEffect, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useStore } from '../state/store'
-import { GLOBE_R } from './Globe'
+import { GLOBE_R } from './constants'
 
 // Expanding amber shell that pulses outward whenever a what-if is applied.
 export function ShockRing() {
