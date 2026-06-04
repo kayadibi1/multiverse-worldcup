@@ -45,7 +45,7 @@ export function Globe() {
           <bufferAttribute attach="attributes-position" args={[atmo.pos, 3]} />
           <bufferAttribute attach="attributes-color" args={[atmo.col, 3]} />
         </bufferGeometry>
-        <pointsMaterial size={0.026} vertexColors transparent opacity={0.7}
+        <pointsMaterial size={0.02} vertexColors transparent opacity={0.45}
           blending={THREE.AdditiveBlending} depthWrite={false} />
       </points>
       <Pillars R={GLOBE_R} />

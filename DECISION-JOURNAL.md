@@ -136,3 +136,15 @@ Built end-to-end, committing after every green gate. Final state:
 - **Public repo:** GitHub auth was present (`kayadibi1`), so the repo was created public and pushed — fulfilling the submission requirement under the standing autonomy grant.
 
 **Honest scope notes:** the rich on-rails cold-open (space→arcs→dive) is a lightweight flythrough (the elaborate version is stretch); no dynamic FPS step-down (static headless reduction only); Langflow/Context Forge are real artifacts mirrored in code, not live servers (stated in their READMEs). None of these block the verified MVP.
+
+---
+
+## 11 · Post-launch fix — the globe "streaks" (a verification blind spot)
+
+**Symptom (user-reported):** in the real browser the globe looked "very wrong" — light streaks shooting off it.
+
+**Root cause:** two compounding things my headless verification couldn't catch. (1) The probability **pillars were radial bars**; near the globe's limb a bar points sideways and pokes *past* the silhouette → a streak. (2) **Bloom is ON in a real browser but my e2e ran headless with bloom OFF** (the `?headless=1` quality flag disables it), so the streaks were invisible in every screenshot I'd checked. The verification was green but tested a *different* visual than the user saw.
+
+**Fix:** (a) added a `?hq=1` override so I could capture the true bloom-on render under automation; (b) replaced bars with **glowing surface dots sized by P(win)** — a node *on* the surface can't streak past the silhouette — plus camera-facing-hemisphere culling so only front nations light up (like city lights); (c) tuned bloom down (intensity 1.1→0.6, threshold 0.18→0.32) and thinned the atmosphere; (d) made the e2e suite **serial** (`workers:1`) after a parallel-load flake. Re-verified: 4/4 e2e green, and a captured *bloom-on* screenshot confirms the clean look.
+
+**Lesson recorded:** "verified" must mean *the artifact the user actually experiences*. A headless WebGL pass is necessary but not sufficient — a bloom-on visual capture has to be part of the loop, not an afterthought.

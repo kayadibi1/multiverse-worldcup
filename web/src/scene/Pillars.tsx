@@ -4,13 +4,15 @@ import { useFrame } from '@react-three/fiber'
 import { useStore } from '../state/store'
 import { COORDS, latLonToVec3 } from '../data/coords'
 
-const MAXH = 1.35
 const dummy = new THREE.Object3D()
 const col = new THREE.Color()
-const up = new THREE.Vector3(0, 1, 0)
+const camDir = new THREE.Vector3()
+const q = new THREE.Quaternion()
+const wn = new THREE.Vector3()
 
-// Glowing bar per nation; height = P(win). Heights tween toward target each frame so
-// a what-if visibly ripples; matrices update in place (no geometry recreation).
+// One glowing node per nation, sitting ON the globe surface; radius + brightness = P(win).
+// A surface dot can't streak past the silhouette like a radial bar, and we still fade it
+// out on the far/rim hemisphere so only camera-facing nations light up (like city lights).
 export function Pillars({ R }: { R: number }) {
   const sim = useStore((s) => s.sim)
   const ratings = useStore((s) => s.ratings)
@@ -27,7 +29,7 @@ export function Pillars({ R }: { R: number }) {
     [codes],
   )
   const ref = useRef<THREE.InstancedMesh>(null)
-  const target = useRef(new Float32Array(48))
+  const target = useRef(new Float32Array(48)) // normalized 0..1 by favorite
   const cur = useRef(new Float32Array(48))
 
   useEffect(() => {
@@ -37,30 +39,34 @@ export function Pillars({ R }: { R: number }) {
     for (const c of codes) maxP = Math.max(maxP, sim.perTeam[c]?.pChamp ?? 0)
     maxP = maxP || 1
     for (let i = 0; i < 48; i++) {
+      const frac = i < codes.length ? (sim.perTeam[codes[i]]?.pChamp ?? 0) / maxP : 0
+      target.current[i] = frac
       if (i < codes.length) {
-        const frac = (sim.perTeam[codes[i]]?.pChamp ?? 0) / maxP
-        target.current[i] = Math.max(0.03, frac * MAXH)
-        col.setRGB(0.35 + 0.65 * frac, 0.72 + 0.16 * frac, 1 - 0.55 * frac)
+        col.setRGB(0.42 + 0.58 * frac, 0.76 + 0.18 * frac, 1 - 0.45 * frac)
         mesh.setColorAt(i, col)
-      } else {
-        target.current[i] = 0
       }
     }
     if (mesh.instanceColor) mesh.instanceColor.needsUpdate = true
   }, [sim, codes])
 
-  useFrame((_, dt) => {
+  useFrame((state, dt) => {
     const mesh = ref.current
     if (!mesh) return
+    camDir.copy(state.camera.position).normalize() // globe at origin
+    mesh.parent?.getWorldQuaternion(q)
     const k = Math.min(1, dt * 4)
     for (let i = 0; i < 48; i++) {
       cur.current[i] += (target.current[i] - cur.current[i]) * k
       if (i < normals.length) {
-        const h = Math.max(0.0001, cur.current[i])
         const nm = normals[i]
-        dummy.position.copy(nm).multiplyScalar(R + h / 2)
-        dummy.quaternion.setFromUnitVectors(up, nm)
-        dummy.scale.set(0.045, h, 0.045)
+        wn.copy(nm).applyQuaternion(q)
+        const facing = wn.dot(camDir)
+        const t = THREE.MathUtils.clamp((facing - 0.15) / 0.35, 0, 1)
+        const sv = t * t * (3 - 2 * t)
+        const radius = (0.014 + cur.current[i] * 0.06) * sv
+        dummy.position.copy(nm).multiplyScalar(R + 0.01)
+        dummy.quaternion.identity()
+        dummy.scale.setScalar(Math.max(0.0001, radius))
         dummy.updateMatrix()
         mesh.setMatrixAt(i, dummy.matrix)
       } else {
@@ -74,7 +80,7 @@ export function Pillars({ R }: { R: number }) {
 
   return (
     <instancedMesh ref={ref} args={[undefined as any, undefined as any, 48]} frustumCulled={false}>
-      <boxGeometry args={[1, 1, 1]} />
+      <sphereGeometry args={[1, 12, 12]} />
       <meshBasicMaterial toneMapped={false} />
     </instancedMesh>
   )
