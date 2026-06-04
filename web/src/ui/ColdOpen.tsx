@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
 import { useStore } from '../state/store'
 
-// Lightweight on-rails open: start far out in space, then ease into the globe.
-// Backdrop is pointer-events:none so it never blocks the UI; skippable; reduced-motion = instant.
+// On-rails open: space → spin → converge on the host → dive down onto the city → into the
+// stadium (the most-likely final). Skip jumps straight to the explorable globe hub.
 export function ColdOpen() {
   const view = useStore((s) => s.view)
   const ratings = useStore((s) => s.ratings)
@@ -12,8 +12,17 @@ export function ColdOpen() {
     if (view !== 'cold' || !ratings) return
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
     if (reduced) { set({ view: 'globe' }); return }
-    const t = setTimeout(() => set({ view: 'globe' }), 8000)
-    return () => clearTimeout(t)
+    const tmr = setTimeout(() => {
+      const st = useStore.getState()
+      const t = st.sim?.seedTimelines?.[0]
+      if (t) {
+        const [a, b] = t.finalists
+        set({ view: 'stadium', fixture: { a, b, round: 'F', ga: a === t.champion ? 2 : 1, gb: b === t.champion ? 2 : 1, seed: t.seed } })
+      } else {
+        set({ view: 'globe' })
+      }
+    }, 9700)
+    return () => clearTimeout(tmr)
   }, [view, ratings, set])
 
   if (view !== 'cold') return null
@@ -21,7 +30,7 @@ export function ColdOpen() {
     <div className="coldopen" data-testid="coldopen">
       <div className="co-card">
         <div className="co-title">MULTIVERSE</div>
-        <div className="co-sub">48 nations · one host · every future converging on North America.</div>
+        <div className="co-sub">48 nations converging on the host — diving into the final.</div>
       </div>
       <button data-testid="skip-cold-open" onClick={() => set({ view: 'globe' })}>Skip intro ▸</button>
     </div>

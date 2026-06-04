@@ -3,7 +3,7 @@ import { useMemo, useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useStore } from '../state/store'
 import { COORDS, latLonToVec3 } from '../data/coords'
-import { GLOBE_R as R } from './constants'
+import { GLOBE_R as R, HOST_LATLON } from './constants'
 
 const HOSTS = new Set(['USA', 'CAN', 'MEX'])
 const SEG = 96
@@ -13,7 +13,7 @@ const CONF: Record<string, string> = {
   UEFA: '#4db5ff', CONMEBOL: '#ffd27a', CAF: '#3ddc97',
   AFC: '#ff7a7a', CONCACAF: '#b78cff', OFC: '#ff9ee0',
 }
-const usV = latLonToVec3(39, -98, 1)
+const usV = latLonToVec3(HOST_LATLON[0], HOST_LATLON[1], 1)
 const US = new THREE.Vector3(usV[0], usV[1], usV[2]).normalize().multiplyScalar(R)
 const aUS = Math.atan2(US.z, US.x)
 const pUS = Math.acos(US.y / R)
@@ -107,10 +107,15 @@ export function Traces() {
       ;(hg.getAttribute('color') as THREE.BufferAttribute).needsUpdate = true
     }
     const frac = traces.length ? completed / traces.length : 0
+    // flare at convergence (~7s), then fade out so the dive reveals the city beneath
+    const fadeOut = THREE.MathUtils.clamp(1 - (e - 7.4) / 0.9, 0, 1)
+    for (let i = 0; i < lines.length; i++) {
+      ;(lines[i].material as THREE.LineBasicMaterial).opacity = 0.85 * fadeOut
+    }
     if (glowRef.current) {
       const s = 0.4 + 2.8 * frac
       glowRef.current.scale.set(s, s, 1)
-      ;(glowRef.current.material as THREE.SpriteMaterial).opacity = 0.1 + 0.9 * frac
+      ;(glowRef.current.material as THREE.SpriteMaterial).opacity = (0.1 + 0.9 * frac) * fadeOut
     }
   })
 

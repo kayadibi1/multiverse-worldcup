@@ -3,25 +3,32 @@ import { useFrame } from '@react-three/fiber'
 import { CameraControls } from '@react-three/drei'
 import * as THREE from 'three'
 import { useStore } from '../state/store'
-import { GLOBE_R as R } from './constants'
+import { GLOBE_R as R, HOST_LATLON } from './constants'
 import { latLonToVec3 } from '../data/coords'
 
-// Direction of the US at the end of the spin (lat 39N → upper-front, not the equator).
-const usV = latLonToVec3(39, -98, 1)
-const usN = new THREE.Vector3(usV[0], usV[1], usV[2]).normalize()
-const RHO1 = Math.PI / 2 - Math.atan2(usN.z, usN.x)
-const usDir = usN.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), RHO1)
+const hostV = latLonToVec3(HOST_LATLON[0], HOST_LATLON[1], 1)
+const hostN = new THREE.Vector3(hostV[0], hostV[1], hostV[2]).normalize()
+const RHO1 = Math.PI / 2 - Math.atan2(hostN.z, hostN.x)
+const hostDir = hostN.clone().applyAxisAngle(new THREE.Vector3(0, 1, 0), RHO1) // host direction at spin's end
 
-// Cold open: zoom slowly straight down the US axis (so the US ends up centered) while the
-// globe spins the world through view beneath.
+// Cold open camera, two phases down the host axis (so the host city ends centered):
+//  0–7s  converge   : far -> mid as the world spins in and the traces gather on the host
+//  7–9.6s dive       : mid -> just above the city, showing the in-between zoom levels
 function ColdCam() {
-  const t = useRef(0)
+  const e = useRef(0)
   useFrame((state, dt) => {
-    t.current = Math.min(1, t.current + dt / 7)
-    const tt = t.current
-    const e = tt < 0.5 ? 2 * tt * tt : 1 - Math.pow(-2 * tt + 2, 2) / 2 // easeInOut
-    const dist = THREE.MathUtils.lerp(13, 3.6, e)
-    state.camera.position.copy(usDir).multiplyScalar(R + dist)
+    e.current += dt
+    const t = e.current
+    let dist: number
+    if (t <= 7) {
+      const p = t / 7
+      const ease = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2
+      dist = THREE.MathUtils.lerp(13, 3.6, ease)
+    } else {
+      const p = Math.min(1, (t - 7) / 2.6)
+      dist = THREE.MathUtils.lerp(3.6, 0.14, p * p) // accelerate the dive in
+    }
+    state.camera.position.copy(hostDir).multiplyScalar(R + dist)
     state.camera.lookAt(0, 0, 0)
   })
   return null

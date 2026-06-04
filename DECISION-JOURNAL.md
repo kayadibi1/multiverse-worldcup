@@ -184,3 +184,13 @@ Iterated the cold open to the user's exact direction: (1) **8K night+day Earth**
 **The trap that cost several iterations:** my screenshot tool waited `N` ms **after `window.__multiverse.ready`** (~1.5s into load), but the scene's cold-open clock starts at page load — so "capture at 7s" was really capturing ~8.8s of scene time, *past the cold open's end*. I kept "seeing" a dead globe view (the give-away: the globe-only coachmark was visible) and wrongly concluded the convergence wasn't rendering — when in fact I was photographing the wrong moment. Once I corrected for the offset (scene-time ≈ ready + waited), the convergence flare was there and dramatic.
 
 **Lesson:** when a time-based animation "isn't showing," verify you're sampling the right instant before changing the code. A wrong clock reference will send you debugging things that already work. Re-verified 4/4 e2e + a bloom-on capture of the centered US flare (now the hero image).
+
+---
+
+## 15 · Cold-open v3 — dive through the city into the stadium + pixel-art flags
+
+Two more user steers: (1) don't snap to a "random" globe view when the traces finish — keep going: **dive down onto the host city (MetLife/NJ) showing the in-between zoom levels, then punch into the stadium** (the most-likely final). (2) The flags still weren't the style they wanted — make them **pixel-art** (low-res grid, crisp pixels), not smooth.
+
+- **Two-phase cold camera** down a single host axis: converge (far→mid, 0–7s) → **dive** (mid→just-above-the-city, 7–9.6s), then `ColdOpen` hands off to `view:'stadium'` with the top timeline's final, masked by the fade. The convergence beacon (and traces, and flags) **time-fade right after the flare** so the dive reveals the actual 8K city lights instead of whiting out inside the flare. A shared `HOST_LATLON` constant aligns the spin landing, the convergence point, and the dive target.
+- **Pixel flags:** downsample each flag to a 30×20 grid, upscale with `NearestFilter`/`imageSmoothingEnabled=false` (hard pixels) into a neon-framed badge with faint scanlines — retro-pixel, matching the glowing aesthetic.
+- Product flow shift: the intro now **lands you in the marquee final** (narrated by Granite); the explorable Oracle Globe is one "⤺ Back to globe" away (skip-intro also goes straight to the globe). 4/4 e2e still green.

@@ -6,38 +6,35 @@ import { useStore } from '../state/store'
 import { COORDS, latLonToVec3 } from '../data/coords'
 import { GLOBE_R as R } from './constants'
 
-// Stylize a raw flag into a glowing circular badge (matches the neon globe aesthetic).
+// Pixel-art flag: downsample to a tiny grid, then upscale with NO smoothing → crisp pixels,
+// inside a neon frame so it matches the glowing-globe style.
+const PW = 30, PH = 20
+const W = 132, H = 92
 function makeBadge(img: HTMLImageElement | undefined): THREE.Texture {
-  const S = 80
-  const c = document.createElement('canvas'); c.width = S; c.height = S
+  const small = document.createElement('canvas'); small.width = PW; small.height = PH
+  const sctx = small.getContext('2d')!
+  if (img) { sctx.imageSmoothingEnabled = true; sctx.drawImage(img, 0, 0, PW, PH) }
+  const c = document.createElement('canvas'); c.width = W; c.height = H
   const ctx = c.getContext('2d')!
-  ctx.clearRect(0, 0, S, S)
-  ctx.save()
-  ctx.beginPath(); ctx.arc(S / 2, S / 2, S / 2 - 8, 0, Math.PI * 2); ctx.clip()
-  if (img) {
-    const iw = img.width || 40, ih = img.height || 27
-    const sc = Math.max((S - 16) / iw, (S - 16) / ih)
-    const dw = iw * sc, dh = ih * sc
-    ctx.imageSmoothingEnabled = true
-    ctx.drawImage(img, (S - dw) / 2, (S - dh) / 2, dw, dh)
-  }
-  // gentle inner shading so it reads as a 3D badge
-  const g = ctx.createRadialGradient(S / 2, S / 2 - 6, 4, S / 2, S / 2, S / 2)
-  g.addColorStop(0, 'rgba(255,255,255,0.10)'); g.addColorStop(1, 'rgba(0,10,30,0.35)')
-  ctx.fillStyle = g; ctx.fillRect(0, 0, S, S)
-  ctx.restore()
-  // glowing rim
-  ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(200,230,255,0.95)'
-  ctx.shadowColor = 'rgba(120,200,255,1)'; ctx.shadowBlur = 12
-  ctx.beginPath(); ctx.arc(S / 2, S / 2, S / 2 - 8, 0, Math.PI * 2); ctx.stroke()
+  ctx.imageSmoothingEnabled = false
+  const m = 12
+  ctx.drawImage(small, m, m, W - 2 * m, H - 2 * m) // pixelated upscale
+  // subtle scanline darkening for the retro feel
+  ctx.fillStyle = 'rgba(0,8,24,0.16)'
+  for (let y = m; y < H - m; y += 4) ctx.fillRect(m, y, W - 2 * m, 1)
+  // neon frame
+  ctx.lineWidth = 4; ctx.strokeStyle = 'rgba(205,232,255,0.95)'
+  ctx.shadowColor = 'rgba(120,200,255,1)'; ctx.shadowBlur = 11
+  ctx.strokeRect(m, m, W - 2 * m, H - 2 * m)
   const t = new THREE.CanvasTexture(c)
+  t.magFilter = THREE.NearestFilter; t.minFilter = THREE.NearestFilter
   t.colorSpace = THREE.SRGBColorSpace
-  t.anisotropy = 4
   return t
 }
 
 const easeOutBack = (t: number) => { const c1 = 1.7, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2) }
-const SIZE = 0.17
+const SIZE = 0.2
+const ASPECT = H / W
 
 export function Flags() {
   const ratings = useStore((s) => s.ratings)
@@ -67,6 +64,7 @@ export function Flags() {
     if (!g) return
     g.getWorldQuaternion(q)
     camDir.copy(state.camera.position).normalize()
+    const fadeOut = THREE.MathUtils.clamp(1 - (e - 7.4) / 0.9, 0, 1) // fade before the city dive
     for (let i = 0; i < meta.length; i++) {
       const sp = refs.current[i]
       if (!sp) continue
@@ -75,8 +73,8 @@ export function Flags() {
       if (!started.current[i] && facing > 0.32) { started.current[i] = true; startT.current[i] = e }
       const pop = started.current[i] ? THREE.MathUtils.clamp((e - startT.current[i]) / 0.5, 0, 1) : 0
       const vis = facing > 0.14 ? 1 : 0
-      const s = (pop <= 0 ? 0 : easeOutBack(pop)) * vis
-      sp.scale.set(SIZE * s, SIZE * s, 1)
+      const s = (pop <= 0 ? 0 : easeOutBack(pop)) * vis * fadeOut
+      sp.scale.set(SIZE * s, SIZE * ASPECT * s, 1)
     }
   })
 

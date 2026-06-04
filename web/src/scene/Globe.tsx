@@ -8,11 +8,11 @@ import { Flags } from './Flags'
 import { useStore } from '../state/store'
 import { quality } from '../quality'
 import { latLonToVec3 } from '../data/coords'
-import { GLOBE_R } from './constants'
+import { GLOBE_R, HOST_LATLON } from './constants'
 
 const COLD_DUR = 7
 const SPIN = Math.PI * 1.8 // start just beside North America, sweep ~324°, land on it
-const usN = (() => { const v = latLonToVec3(39, -98, 1); return new THREE.Vector3(v[0], v[1], v[2]).normalize() })()
+const usN = (() => { const v = latLonToVec3(HOST_LATLON[0], HOST_LATLON[1], 1); return new THREE.Vector3(v[0], v[1], v[2]).normalize() })()
 // grp.rotation.y that brings the US to face +Z (the camera) at the end of the spin.
 const RHO1 = Math.PI / 2 - Math.atan2(usN.z, usN.x)
 const smoother = (t: number) => t * t * t * (t * (t * 6 - 15) + 10)
