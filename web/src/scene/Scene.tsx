@@ -1,9 +1,11 @@
+import { Suspense } from 'react'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { Globe } from './Globe'
 import { Stadium } from './Stadium'
 import { ShockRing } from './ShockRing'
 import { CameraRig } from './CameraRig'
 import { Arcs } from './Arcs'
+import { Flags } from './Flags'
 import { useStore } from '../state/store'
 import { quality } from '../quality'
 
@@ -17,6 +19,7 @@ export function Scene() {
       {!inStadium && <Globe />}
       {!inStadium && <ShockRing />}
       {view === 'cold' && <Arcs />}
+      {view === 'cold' && <Suspense fallback={null}><Flags /></Suspense>}
       {inStadium && <Stadium />}
       <CameraRig />
       {quality.bloom && (
