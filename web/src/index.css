@@ -109,3 +109,16 @@ html, body, #root { margin: 0; height: 100%; background: var(--bg); color: var(-
 .fade { position: absolute; inset: 0; background: #05070f; opacity: 0; pointer-events: none; z-index: 30; transition: opacity 0.5s ease; }
 .fade.flash { opacity: 1; transition: none; }
 
+/* Hints / coachmark */
+.controls-legend { position: absolute; bottom: 14px; left: 16px; z-index: 11; font-size: 11px; color: var(--muted);
+  background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 5px 11px; pointer-events: none; }
+.coachmark { position: absolute; bottom: 126px; left: 50%; z-index: 14; background: var(--amber); color: #0a0e1a;
+  font-weight: 700; font-size: 13px; padding: 8px 16px; border-radius: 10px; pointer-events: none;
+  box-shadow: 0 6px 26px rgba(255, 210, 122, 0.35); animation: bob 1.5s ease-in-out infinite; }
+@keyframes bob { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-6px); } }
+
+/* Futures rail = obvious Watch buttons */
+.future { transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s; }
+.future:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 6px 18px rgba(255, 210, 122, 0.18); }
+.future .watch { margin-top: 6px; font-size: 10px; font-weight: 700; color: var(--amber); letter-spacing: 0.3px; }
+

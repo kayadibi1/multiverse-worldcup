@@ -18,13 +18,15 @@ export function FuturesRail() {
 
   return (
     <div className="panel rail" data-testid="futures-rail">
-      <div className="h">{(sim?.N ?? 0).toLocaleString()} timelines simulated — 3 wildly different ones</div>
+      <div className="h">▶ {(sim?.N ?? 0).toLocaleString()} timelines simulated — click a final to dive in</div>
       <div className="rail-row">
         {tls.map((t, i) => (
           <button className="future" key={i} data-testid={'future-' + t.champion}
-            onClick={() => openFixture(t.champion, t.finalists, t.seed)}>
+            onClick={() => openFixture(t.champion, t.finalists, t.seed)}
+            title="Click to watch this match">
             <div className="champ">🏆 {name(t.champion)}</div>
             <div className="path">{name(t.finalists[0])} v {name(t.finalists[1])}</div>
+            <div className="watch">▶ Watch the final</div>
           </button>
         ))}
       </div>
